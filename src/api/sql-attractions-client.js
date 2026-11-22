@@ -10,7 +10,7 @@ export function createSqlAttractionsClient() {
         const SQL = await window.initSqlJs({
           locateFile: file => `./vendor/${file}`
         });
-        const response = await fetch("./bangkoktest.sql");
+        const response = await fetch("./database.sql");
         if (!response.ok) throw new Error(`Local SQL file could not be loaded: ${response.status}`);
         const sql = await response.text();
         const database = new SQL.Database();
