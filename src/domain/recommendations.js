@@ -20,7 +20,7 @@ export async function searchRecommendations(input, client, { today = new Date() 
     throw error;
   }
   let pages = client.getSeeAttractions
-    ? (await client.getSeeAttractions(validation.value.city)).attractions || []
+    ? (await client.getSeeAttractions(validation.value.city, validation.value)).attractions || []
     : await getLegacyPages(client, validation.value.city);
   if (client.getAttractionDetails && pages.length) pages = await client.getAttractionDetails(pages);
   const dates = datesBetween(validation.value.startDate, validation.value.endDate);

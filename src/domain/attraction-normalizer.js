@@ -3,7 +3,10 @@ import { PRICING_STATUS, TRANSPORT_STATUS } from "./constants.js";
 export function normalizeAttraction(raw = {}) {
   const page = raw.page || raw;
   const title = page.title || page.name || "Unnamed attraction";
-  const articleUrl = page.fullurl || page.articleUrl || `https://en.wikivoyage.org/wiki/${encodeURIComponent(title.replaceAll(" ", "_"))}`;
+  const localSql = page.sqlData != null;
+  const articleUrl = page.fullurl || page.articleUrl || (localSql
+    ? null
+    : `https://en.wikivoyage.org/wiki/${encodeURIComponent(title.replaceAll(" ", "_"))}`);
   const rawPricing = page.pricing || {};
   const pricing = rawPricing.free
     ? { status: PRICING_STATUS.FREE, free: true }
@@ -20,11 +23,12 @@ export function normalizeAttraction(raw = {}) {
     coordinates: page.coordinates || null,
     pricing,
     opening: page.opening || { status: "unknown" },
+    sqlData: page.sqlData || null,
     transportation: transport
       ? { status: TRANSPORT_STATUS.AVAILABLE, ...transport, sourceUrl: transport.sourceUrl || articleUrl }
       : { status: TRANSPORT_STATUS.UNAVAILABLE, sourceUrl: articleUrl },
     source: {
-      provider: "Wikivoyage",
+      provider: localSql ? "Local SQL" : "Wikivoyage",
       articleUrl,
       retrievedAt: new Date().toISOString(),
       license: "CC BY-SA 4.0",

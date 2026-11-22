@@ -7,8 +7,11 @@ const root = join(fileURLToPath(new URL(".", import.meta.url)), "..");
 const contentTypes = {
   ".css": "text/css",
   ".html": "text/html",
-  ".js": "text/javascript"
+  ".js": "text/javascript",
+  ".sql": "application/sql",
+  ".wasm": "application/wasm"
 };
+
 
 createServer(async (request, response) => {
   const requestedPath = request.url === "/" ? "/index.html" : request.url;

@@ -103,16 +103,46 @@ function renderResults() {
     const cost = document.createElement("p");
     cost.innerHTML = "<strong>Group cost:</strong> ";
     cost.append(price);
+    if (attraction.sqlData?.datesClosed) {
+      const closedDates = document.createElement("p");
+      closedDates.innerHTML = `<strong>Closed dates:</strong> ${attraction.sqlData.datesClosed}`;
+      card.append(closedDates);
+    }
+    if (attraction.sqlData?.daysOfWeekClosed) {
+      const closedDays = document.createElement("p");
+      closedDays.innerHTML = `<strong>Closed days:</strong> ${attraction.sqlData.daysOfWeekClosed}`;
+      card.append(closedDays);
+    }
+    const childAges = getInput().childAges;
+    if (attraction.sqlData?.childPriceNote
+      && attraction.sqlData.childAgeLimit != null
+      && childAges.some(age => age <= attraction.sqlData.childAgeLimit)) {
+      const childNote = document.createElement("p");
+      childNote.innerHTML = `<strong>Child price:</strong> ${attraction.sqlData.childPriceNote}`;
+      card.append(childNote);
+    }
+    if (attraction.transportation?.status === "available" && attraction.transportation.details) {
+      const transport = document.createElement("p");
+      transport.innerHTML = `<strong>Public transport:</strong> ${attraction.transportation.details}`;
+      card.append(transport);
+    }
     const disclaimer = document.createElement("p");
     disclaimer.className = "muted";
     disclaimer.textContent = attraction.pricing.disclaimer || "Source: Wikivoyage";
     card.append(heading, description, cost, disclaimer);
-    const link = document.createElement("a");
-    link.href = attraction.articleUrl;
-    link.target = "_blank";
-    link.rel = "noreferrer";
-    link.textContent = "View source";
-    card.append(link);
+    if (attraction.articleUrl) {
+      const link = document.createElement("a");
+      link.href = attraction.articleUrl;
+      link.target = "_blank";
+      link.rel = "noreferrer";
+      link.textContent = "View source";
+      card.append(link);
+    } else {
+      const source = document.createElement("p");
+      source.className = "muted";
+      source.textContent = "Source: Local SQL";
+      card.append(source);
+    }
     const button = document.createElement("button");
     button.type = "button";
     button.textContent = "Add to trip";

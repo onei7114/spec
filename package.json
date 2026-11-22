@@ -11,6 +11,9 @@
     "validate:openapi": "node scripts/validate-openapi.js",
     "validate:performance": "node scripts/validate-performance.js"
   },
+  "dependencies": {
+    "sql.js": "^1.13.0"
+  },
   "devDependencies": {
     "c8": "^10.1.3",
     "eslint": "^9.17.0"
