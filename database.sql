@@ -38,7 +38,7 @@ INSERT INTO bangkok_attractions (
     ('Bangkok', 'Santichaiprakarn Park', 0.00, 0.00, NULL, NULL, 'Chao Phraya Express Boat (Phra Arthit Pier)', NULL, NULL),
     ('Bangkok', 'Phra Sumen Fort', 0.00, 0.00, NULL, NULL, 'Chao Phraya Express Boat (Phra Arthit Pier)', NULL, NULL),
     ('Bangkok', 'Queen Saovabha Institute Snake Farm', 5.90, 1.47, 5, 'For children under 110 cm', 'MRT Subway (Sam Yan or Si Lom Station) or BTS Skytrain (Sala Daeng Station)', NULL, NULL),
-    ('Bangkok', 'Siam Ocean World', 41.00, 35.30, 11, 'Applies to children ages 2–11', 'BTS Skytrain (Siam Station)', NULL, NULL)
+    ('Bangkok', 'Siam Ocean World', 41.00, 35.30, 11, 'Applies to children ages 2–11', 'BTS Skytrain (Siam Station)', NULL, NULL),
     ('Paris', 'Eiffel Tower', 38.00, 9.50, 11, 'Free under age 4; child rate (ages 4–11) based on summit lift ticket', 'RER C (Champ de Mars - Tour Eiffel) or Metro Line 6 (Bir-Hakeim)', NULL, NULL),
     ('Paris', 'Arc de Triomphe', 17.50, 0.00, 17, 'Free for under 18s and EU residents ages 18–25', 'Metro Lines 1, 2, 6 or RER A (Charles de Gaulle - Étoile)', '1/1, 5/1, 5/8 (morning), 7/14 (morning), 11/11 (morning), 12/25', NULL),
     ('Paris', 'Notre-Dame de Paris', 0.00, 0.00, NULL, 'Cathedral entry is free; treasury/towers have separate fees', 'Metro Line 4 (Cité) or RER B/C (Saint-Michel Notre-Dame)', NULL, NULL),
