@@ -73,3 +73,21 @@ known, estimated, and unknown values.
 
 - Meta-tag-only CSP: weaker than response headers and cannot replace hosting policy.
 - No CSP: conflicts with the security requirements.
+
+## Decision: Use browser-side SQLite for the local Bangkok database
+
+**Rationale**: `database.sql` is loaded and executed by SQL.js in the user's browser.
+This keeps the static GitHub Pages deployment backend-free while providing structured
+attraction, child-price, closure, and public-transportation data for Bangkok.
+
+**Alternatives considered**:
+
+- A server-side SQLite endpoint: provides the same data but requires paid or managed
+  hosting and would not fit the static deployment.
+- Fetching a SQLite binary: requires a generated database artifact, whereas a SQL
+  text file is transparent and simple to update.
+
+**Security and deployment**: SQL.js uses WebAssembly. The static hosting CSP must allow
+`'self'` scripts and WebAssembly compilation using `wasm-unsafe-eval` or a compatible
+development allowance. The SQL text file is public static data, not an authentication
+boundary.

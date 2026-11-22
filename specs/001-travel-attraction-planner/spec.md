@@ -191,7 +191,9 @@ label.
   information, routes, schedules, or fares.
 - **FR-013**: The application MUST use Wikivoyage as the primary free source for
   attraction and destination information, or clearly identify an approved supporting
-  source when required information is unavailable there.
+  source when required information is unavailable there. A static SQL source may
+  provide structured fallback data for a covered city; the app MUST not search
+  Wikivoyage for that city when matching local SQL rows exist.
 - **FR-014**: The application MUST provide user-facing error messages when the source
   cannot be reached or the search cannot be completed.
 - **FR-015**: A user MUST be able to enter the city they are traveling to, the date

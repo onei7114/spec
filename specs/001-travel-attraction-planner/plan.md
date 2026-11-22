@@ -10,6 +10,12 @@ stores the current trip and bounded API cache in browser storage. The initial pl
 focuses on the API/data/business-rule layer; presentation remains a thin progressive
 enhancement over the contracts.
 
+For destinations represented in the static attraction database, the app loads
+`database.sql` and executes SQL.js in the browser. Bangkok is the initial local
+database city. If the requested city has no SQL rows, the app falls back to
+Wikivoyage. This architecture supports free deployment to GitHub Pages without a
+backend API or database server.
+
 Wikivoyage is a discovery and source-link provider, not a guaranteed authoritative
 source for current prices, opening calendars, or transit routes. Unknown values remain
 unknown, while free attractions are represented as zero cost and child prices use

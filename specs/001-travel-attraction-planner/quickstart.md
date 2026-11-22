@@ -7,6 +7,7 @@ This guide validates the API/domain layer before visual frontend work.
 - A modern browser and HTTPS-capable static host.
 - JavaScript dependencies installed after implementation.
 - Network access to `https://en.wikivoyage.org/w/api.php`.
+- SQL.js browser assets in `vendor/` and the static SQL data file `database.sql`.
 
 ## Required validation commands
 
